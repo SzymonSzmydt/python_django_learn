@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container card dashboard">
+    <div>
+        <h1 class="dashboard-title">Moje rezerwacje</h1>
+        <span class="small"> Rezerwuj książki wygodnie nie wychodząc z domu</span>
+    </div>
+
+    <table class="dashboard-table">
+        <thead>
+            <tr class="dashboard-table__thead">
+                <th> Lp. </th>
+                <th> Tytuł książki</th>
+                <th> Autor </th>
+                <th> Data wypożyczenia </th>
+                <th> Czas zwrotu </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in active_reservations %}
+            <tr class="dashboard-table__tbody">
+                <td> {{ forloop.counter }} </td>
+                <td> {{ r.bookcopy.book.title }} </td>
+                <td> {{ r.bookcopy.book.author }} </td>
+                <td>  {{ r.reservation_date }} </td>
+                <td>  {{ r.expiration_date }} </td>
+            </tr>
+            {% empty %}
+            <tr>             
+                <td colspan="5" class="dashboard-none" align="center">Brak aktywnych rezerwacji</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    
+</div>
+    {% endblock %}

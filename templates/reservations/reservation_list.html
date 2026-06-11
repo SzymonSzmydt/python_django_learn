@@ -1,0 +1,43 @@
+<!-- templates/reservations/reservations_list.html -->
+{% extends "base.html" %}
+
+{% block title %}Rezerwacje{% endblock %}
+
+{% block content %}
+
+<h1>Wszystkie rezerwacje</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Książka</th>
+            <th>Użytkownik</th>
+            <th>Od</th>
+            <th>Do</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in reservations %}
+            <tr>
+                <td>{{ r.bookcopy.book.title }}</td>
+                <td>{{ r.user.username }}</td>
+                <td>{{ r.reservation_date }}</td>
+                <td>{{ r.expiration_date }}</td>
+                <td>
+                    {% if r.expiration_date >= today %}
+                        <span class="badge active">Aktywna</span>
+                    {% else %}
+                        <span class="badge expired">Wygasła</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5">Brak rezerwacji</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

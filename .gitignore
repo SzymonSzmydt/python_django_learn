@@ -1,0 +1,51 @@
+# === Python (Skompilowane pliki i pamięć podręczna) ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# === Środowiska wirtualne (W zależności od tego, jakiego używasz) ===
+.venv/
+venv/
+ENV/
+env/
+Active/
+
+# === Django (Pliki specyficzne dla frameworka) ===
+# Lokalna baza danych SQLite (nie powinna trafiać do repozytorium)
+db.sqlite3
+db.sqlite3-journal
+
+# Pliki wgrywane przez użytkowników (Media)
+media/
+# Jeśli zbierasz pliki statyczne w jednym folderze produkcyjnym
+staticfiles/
+
+# === Zmienne środowiskowe i Sekrety (Bardzo ważne!) ===
+.env
+.secrets
+secrets.json
+local_settings.py
+
+# === Systemowe i Edytory (VS Code, PyCharm, Mac, Windows) ===
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.DS_Store
+Thumbs.db
+
+# === Testy i Raporty ===
+.htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/

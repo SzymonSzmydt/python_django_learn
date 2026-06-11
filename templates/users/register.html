@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="auth-container">
+    <h2>Rejestracja</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        {% for field in form %}
+            <div class="auth-field">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                <div class="error">{{ field.errors }}</div>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="auth-button">Utwórz konto</button>
+    </form>
+
+    <p>Masz już konto? <a href="{% url 'login' %}">Zaloguj się</a></p>
+</div>
+{% endblock %}

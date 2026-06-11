@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="auth-container">
+    <h2>Logowanie</h2>
+
+    <form method="post">
+        {% csrf_token %}
+    
+        {{ form.non_field_errors }}
+
+
+        <div class="auth-field">
+            <label for="id_username">Nazwa użytkownika</label>
+            {{ form.username }}
+        </div>
+
+        <div class="auth-field">
+            <label for="id_password">Hasło</label>
+            {{ form.password }}
+        </div>
+
+        <button type="submit" class="auth-button">Zaloguj</button>
+    </form>
+
+    <p class="auth-footer__text">
+        Nie masz konta? 
+        <a href="{% url 'register' %}">Zarejestruj się</a>
+    </p>
+</div>
+{% endblock %}
