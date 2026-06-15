@@ -19,6 +19,7 @@
             <label for="id_password">Hasło</label>
             {{ form.password }}
         </div>
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
 
         <button type="submit" class="auth-button">Zaloguj</button>
     </form>

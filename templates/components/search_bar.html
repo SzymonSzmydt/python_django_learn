@@ -1,12 +1,12 @@
 <form method="get" class="search-form">
         <div class="flex">
-                <input type="text" name="q" placeholder="Szukaj w katalogu" value="{{ request.GET.q }}">
+                <input type="text" name="q" autocomplete="off" placeholder="Szukaj w katalogu" value="{{ request.GET.q }}">
                 <button type="submit">Szukaj</button>
         </div>
         
         <div class="search-filters">
                 <label>
-                <input type="radio" name="filter_by" value="title"
+                <input type="radio" name="filter_by" value="title" 
                    {% if request.GET.filter_by == "title" or not request.GET.filter_by %}checked{% endif %}>
                 Tytuł
                 </label>

@@ -571,11 +571,12 @@ button:active {
 .dashboard-table__thead th:nth-child(2),
 .dashboard-table__tbody td:nth-child(2) {
   text-align: left;
-  width: 40%;
+  width: 30%;
 }
 
 .dashboard-table__tbody td {
     text-align: right;
+    width: auto;
 }
 .dashboard-none,
 .dashboard-table__tbody td {

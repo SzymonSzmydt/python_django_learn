@@ -57,7 +57,8 @@
                     
                 {% if user.is_authenticated %}
 
-                <form method="post" action="{% url 'reserve_book' book.id %}">
+                {% if available_copy %}
+                <form method="post" action="{% url 'reserve_book' available_copy.id %}">    
 
                     {% csrf_token %}
                     <button type="submit" class="book-card__button">
@@ -67,7 +68,13 @@
                     </button>
                 </form>
                 {% else %}
-                <a class="book-card__button" href="/login">Zaloguj się, aby rezerwować</a>
+                    <p>Brak dostępnych egzemplarzy</p>
+                {% endif %}
+                {% else %}
+                <a class="book-card__button" href="/login?next={{ request.path }}">
+                    Zaloguj się, aby rezerwować
+                </a>
+
                 {% endif %}
             
             </section>
