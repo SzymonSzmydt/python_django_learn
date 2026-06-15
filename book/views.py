@@ -104,19 +104,16 @@ class BookDetailView(DetailView):
         )
 
     def get_context_data(self, **kwargs):
-        """
-        Dodaje do kontekstu liczbę dostępnych egzemplarzy książki.
-
-        Returns:
-            dict: kontekst przekazywany do template.
-        """
         context = super().get_context_data(**kwargs)
 
         book = self.object
 
-        context["available_copies"] = len([
+        available_copies = [
             copy for copy in book.bookcopys.all()
             if copy.status == BookCopy.Status.AVAILABLE
-        ])
+        ]
+
+        context["available_copies"] = len(available_copies)
+        context["available_copy"] = available_copies[0] if available_copies else None
 
         return context

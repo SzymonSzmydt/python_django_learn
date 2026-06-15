@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from book.views import BookDetailView, BookListView
-from reservation.views import DashboardView, ReserveBookView, register
+from reservation.views import CancelReservationView, DashboardView, ReserveBookView, register
 
 
 urlpatterns = [
@@ -31,7 +31,10 @@ urlpatterns = [
 
     path("", BookListView.as_view(), name="book_list"),
     path("book/<int:pk>/", BookDetailView.as_view(), name="book_detail"),
+
+    path("reservation/cancel/<int:pk>/", CancelReservationView.as_view(), name="cancel_reservation"),
     path("reserve/<int:pk>/", ReserveBookView.as_view(), name="reserve_book"),
+
     path("dashboard/", DashboardView.as_view(), name="dashboard"),
 ]
 

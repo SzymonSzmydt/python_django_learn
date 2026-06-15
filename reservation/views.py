@@ -167,3 +167,24 @@ class ReservationListView(ListView):
         context["today"] = timezone.now().date()
 
         return context
+
+
+class CancelReservationView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        try:
+            reservation = Reservation.objects.select_related("bookcopy").get(
+                pk=pk,
+                user=request.user
+            )
+        except Reservation.DoesNotExist:
+            return redirect("dashboard")
+
+        with transaction.atomic():
+            copy = reservation.bookcopy
+            copy.status = BookCopy.Status.AVAILABLE
+            copy.save(update_fields=["status"])
+
+            reservation.delete()
+
+        return redirect("dashboard")
+
